@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
@@ -15,15 +14,19 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
 import com.sun.glass.events.KeyEvent;
 
 public class MainFrame extends JFrame {
-	private TextPanel textPanel;
+	
 	private JButton btn;
 	private ButtonPanel buttonPanel;
 	private JFileChooser fileChooser;
+	private JTabbedPane tabbedPane;
+	private JTextArea textArea;
 
 	public MainFrame() {
 		super("Quick Heal Technologies Ltd. ");
@@ -34,28 +37,37 @@ public class MainFrame extends JFrame {
 		fileChooser = new JFileChooser();
 		fileChooser.addChoosableFileFilter(new FileFilter1());
 		
-
-		textPanel = new TextPanel();
+		tabbedPane= new JTabbedPane();
 		btn = new JButton("Generate");
 		buttonPanel = new ButtonPanel();
+		textArea= new JTextArea();
 
 		// ActionListener is an interface not a class
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				textPanel.appendText("Please wait while your code gets generated...\n");
+				textArea.append("Please wait while your code gets generated...\n");
 			}
 
 		});
-
+		
+		add(tabbedPane, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.WEST);
-		add(textPanel, BorderLayout.CENTER);
+		//add(textPanel, BorderLayout.CENTER);
 		add(btn, BorderLayout.SOUTH);
 		
-		buttonPanel.setBackground(new Color(102, 153, 102));
-		
+		buttonPanel.setBackground(new Color(107, 165, 125));
+		///////////////////////////////////TABBED PANE///////////////////////////
+		 
+	    tabbedPane.setBackground(Color.ORANGE);
+	    tabbedPane.setForeground(Color.BLACK);
+	    tabbedPane.addTab("Tab1", buttonPanel);
+	    tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+	    tabbedPane.addTab("Tab2", textArea);
+	    tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+	    
 		////////////////////////GENERATE BUTTON//////////////////////////////////////
 		btn.setForeground(new Color(255, 255, 255));
-		btn.setBackground(new Color(255, 102, 0	));
+		btn.setBackground(new Color(247, 81, 81));
 		btn.setFont(new Font("SansSerif", Font.BOLD, 12));
 		btn.setMnemonic(KeyEvent.VK_G);
 
@@ -65,11 +77,10 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-
-	//////////////////////////////////MENU BAR/////////////////////////////////////////////////////////
+	    //////////////////////////////MENU BAR//////////////////////////////////////////
 	    private JMenuBar createMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
-		//menuBar.setBackground(new Color(102, 153, 102));
+		//menuBar.setBackground(new Color(166, 196, 244));
 		menuBar.setFont(new Font("SansSerif", Font.BOLD, 12));
 
 		//////////////// File Menu/////////////////////////////////////////
@@ -90,7 +101,7 @@ public class MainFrame extends JFrame {
 		//////////////////////////// Window Menu///////////////////////////
 		JMenu windowMenu = new JMenu("Window");
 		JMenu showMenu = new JMenu("Show");
-		JMenuItem showPanelItem = new JCheckBoxMenuItem("Button Panel");
+		JMenuItem showPanelItem = new JCheckBoxMenuItem("Tabbed Pane");
 		showPanelItem.setSelected(true);
 		showMenu.add(showPanelItem);
 		windowMenu.add(showMenu);
@@ -104,7 +115,7 @@ public class MainFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ev) {
 				JCheckBoxMenuItem menuItem = (JCheckBoxMenuItem) ev.getSource();
-				buttonPanel.setVisible(menuItem.isSelected());
+				tabbedPane.setVisible(menuItem.isSelected());
 			}
 		});
 		// mnemonics for file menu
