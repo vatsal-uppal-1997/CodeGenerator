@@ -1,9 +1,12 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
@@ -26,7 +29,6 @@ public class MainFrame extends JFrame {
 		super("Quick Heal Technologies Ltd. ");
 
 		setJMenuBar(createMenuBar());
-
 		setLayout(new BorderLayout());
 
 		fileChooser = new JFileChooser();
@@ -48,6 +50,15 @@ public class MainFrame extends JFrame {
 		add(buttonPanel, BorderLayout.WEST);
 		add(textPanel, BorderLayout.CENTER);
 		add(btn, BorderLayout.SOUTH);
+		
+		buttonPanel.setBackground(new Color(102, 153, 102));
+		
+		////////////////////////GENERATE BUTTON//////////////////////////////////////
+		btn.setForeground(new Color(255, 255, 255));
+		btn.setBackground(new Color(255, 102, 0	));
+		btn.setFont(new Font("SansSerif", Font.BOLD, 12));
+		btn.setMnemonic(KeyEvent.VK_G);
+
 
 		setMinimumSize(new Dimension(400, 400));
 		setSize(600, 600);
@@ -55,13 +66,15 @@ public class MainFrame extends JFrame {
 		setVisible(true);
 	}
 
-	// Menu Bar
-	private JMenuBar createMenuBar() {
+	//////////////////////////////////MENU BAR/////////////////////////////////////////////////////////
+	    private JMenuBar createMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
+		//menuBar.setBackground(new Color(102, 153, 102));
+		menuBar.setFont(new Font("SansSerif", Font.BOLD, 12));
 
 		//////////////// File Menu/////////////////////////////////////////
 		JMenu fileMenu = new JMenu("File");
-
+		
 		// creating File menu items
 		JMenuItem exportDataItem = new JMenuItem("Export Data");
 		JMenuItem importDataItem = new JMenuItem("Import Data");
@@ -71,7 +84,7 @@ public class MainFrame extends JFrame {
 		fileMenu.add(exportDataItem);
 		fileMenu.addSeparator(); // creates a nearly invisible horizontal line
 		fileMenu.add(importDataItem);
-		fileMenu.addSeparator();
+		fileMenu.addSeparator();	
 		fileMenu.add(exitItem);
 
 		//////////////////////////// Window Menu///////////////////////////
@@ -113,11 +126,9 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (fileChooser.showSaveDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
 					System.out.println(fileChooser.getSelectedFile());
-				}
-				;
+				};
 			}
 		});
-
 		
 		// exit mnemonic
 		exitItem.setMnemonic(KeyEvent.VK_X);
