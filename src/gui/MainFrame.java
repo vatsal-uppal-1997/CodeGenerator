@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
@@ -14,6 +15,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
@@ -54,6 +56,9 @@ public class MainFrame extends JFrame {
 		add(buttonPanel, BorderLayout.WEST);
 		//add(textPanel, BorderLayout.CENTER);
 		add(btn, BorderLayout.SOUTH);
+		
+		//hr and vrt scrollbars
+		add(new JScrollPane(tabbedPane), BorderLayout.CENTER);
 		
 		buttonPanel.setBackground(new Color(107, 165, 125));
 		///////////////////////////////////TABBED PANE///////////////////////////
