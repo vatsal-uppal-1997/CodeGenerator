@@ -125,6 +125,7 @@ public class ButtonPanel extends JPanel {
 		angularBtn.setForeground(new Color(255, 255, 255));
 		angularBtn.setBackground(new Color(255, 102, 0));
 		angularBtn.setFont(new Font("SansSerif", Font.BOLD, 12));
+		angularBtn.setMnemonic(KeyEvent.VK_A);
 
 		//////////////// THIRD ROW///////////////////////
 		//label
@@ -143,6 +144,7 @@ public class ButtonPanel extends JPanel {
 		javaBtn.setForeground(new Color(255, 255, 255));
 		javaBtn.setBackground(new Color(255, 102, 0));
 		javaBtn.setFont(new Font("SansSerif", Font.BOLD, 12));
+		javaBtn.setMnemonic(KeyEvent.VK_J);
 		
 		//////////////// FOURTH ROW///////////////////////
 		//label
@@ -161,6 +163,7 @@ public class ButtonPanel extends JPanel {
 		dbBtn.setForeground(new Color(255, 255, 255));
 		dbBtn.setBackground(new Color(255, 102, 0));
 		dbBtn.setFont(new Font("SansSerif", Font.BOLD, 12));
+		dbBtn.setMnemonic(KeyEvent.VK_D);
 
 		//////////////// FIFTH ROW///////////////////////
 		//label
@@ -179,6 +182,7 @@ public class ButtonPanel extends JPanel {
 		testBtn.setForeground(new Color(255, 255, 255));
 		testBtn.setBackground(new Color(255, 102, 0));
 		testBtn.setFont(new Font("SansSerif", Font.BOLD, 12));
+		testBtn.setMnemonic(KeyEvent.VK_E);
 	}
 
 }
