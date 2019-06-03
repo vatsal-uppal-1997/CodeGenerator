@@ -72,8 +72,8 @@ public class MainFrame extends JFrame {
 		btn.setMnemonic(KeyEvent.VK_G);
 
 
-		setMinimumSize(new Dimension(400, 400));
-		setSize(600, 600);
+		setMinimumSize(new Dimension(350, 350));
+		setSize(450, 450);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
