@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
@@ -105,8 +104,8 @@ public class MainFrame extends JFrame {
 
 		//////////////////////////// Window Menu///////////////////////////
 		JMenu windowMenu = new JMenu("Window");
-		JMenu showMenu = new JMenu("Show");
-		JMenuItem showPanelItem = new JCheckBoxMenuItem("Tabbed Pane");
+		JMenu showMenu = new JMenu("Display");
+		JMenuItem showPanelItem = new JCheckBoxMenuItem("Show Tabs");
 		showPanelItem.setSelected(true);
 		showMenu.add(showPanelItem);
 		windowMenu.add(showMenu);
