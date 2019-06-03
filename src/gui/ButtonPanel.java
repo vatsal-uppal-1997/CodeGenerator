@@ -46,9 +46,9 @@ public class ButtonPanel extends JPanel {
 
 		// labels
 		txtLabel = new JLabel("Create a new text file : ");
-		angularLabel = new JLabel("New angular project : ");
-		javaLabel = new JLabel("New java application : ");
-		dbLabel = new JLabel("New database table : ");
+		angularLabel = new JLabel("Create a angular project : ");
+		javaLabel = new JLabel("Create a new java application : ");
+		dbLabel = new JLabel("Create a new collection : ");
 		testLabel = new JLabel("Create new testcases : ");
 
 		// buttons
@@ -56,7 +56,7 @@ public class ButtonPanel extends JPanel {
 		angularBtn = new JButton("Angular");
 		javaBtn = new JButton("Java");
 		dbBtn = new JButton("Database");
-		testBtn = new JButton("Testing");
+		testBtn = new JButton("JUnit");
 
 		// border indentation
 		Border innerBorder = BorderFactory.createTitledBorder("Code Generator");
@@ -68,7 +68,7 @@ public class ButtonPanel extends JPanel {
 
 		GridBagConstraints gc = new GridBagConstraints();
 
-		//////////////// FIRST ROW///////////////////////
+		//////////////// FIRST ROW ///////////////////////
 
 		// controls(for a given cell) how much space it takes
 		// relative to the other cell
@@ -108,7 +108,7 @@ public class ButtonPanel extends JPanel {
 			
 		});
 		
-		//////////////// SECOND ROW///////////////////////
+		//////////////// SECOND ROW ///////////////////////
 		//label
 		gc.gridy = 1;
 		gc.gridx = 0;
@@ -127,7 +127,7 @@ public class ButtonPanel extends JPanel {
 		angularBtn.setFont(new Font("SansSerif", Font.BOLD, 12));
 		angularBtn.setMnemonic(KeyEvent.VK_A);
 
-		//////////////// THIRD ROW///////////////////////
+		//////////////// THIRD ROW ///////////////////////
 		//label
 		gc.gridy = 2;
 		gc.gridx = 0;
@@ -146,7 +146,7 @@ public class ButtonPanel extends JPanel {
 		javaBtn.setFont(new Font("SansSerif", Font.BOLD, 12));
 		javaBtn.setMnemonic(KeyEvent.VK_J);
 		
-		//////////////// FOURTH ROW///////////////////////
+		//////////////// FOURTH ROW  ///////////////////////
 		//label
 		gc.gridy = 3;
 		gc.gridx = 0;
@@ -165,7 +165,7 @@ public class ButtonPanel extends JPanel {
 		dbBtn.setFont(new Font("SansSerif", Font.BOLD, 12));
 		dbBtn.setMnemonic(KeyEvent.VK_D);
 
-		//////////////// FIFTH ROW///////////////////////
+		//////////////// FIFTH ROW ///////////////////////
 		//label
 		gc.gridy = 4;
 		gc.gridx = 0;
@@ -182,7 +182,7 @@ public class ButtonPanel extends JPanel {
 		testBtn.setForeground(new Color(255, 255, 255));
 		testBtn.setBackground(new Color(255, 102, 0));
 		testBtn.setFont(new Font("SansSerif", Font.BOLD, 12));
-		testBtn.setMnemonic(KeyEvent.VK_E);
+		testBtn.setMnemonic(KeyEvent.VK_U);
 	}
 
 }
