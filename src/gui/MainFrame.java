@@ -58,26 +58,20 @@ public class MainFrame extends JFrame {
 		buttonPanel.setBackground(new Color(107, 165, 125));
 		
 		///////////////////////////////////TABBED PANE///////////////////////////
-          
-         // add(tab, BorderLayout.CENTER);
+         
    	      tab.setBackground(Color.ORANGE);
    	      tab.setForeground(Color.BLACK);
           JButton button = new JButton();
 
          // this GridLayout will create a single row of components, with equal space for each component
-         JPanel tab2Panel = new JPanel(new GridLayout(1,0));
-         tab2Panel.add(buttonPanel);
-         tab2Panel.add(new JButton("Button"));		
-         tab.add("Generator", tab2Panel);
+         JPanel tabPanel = new JPanel(new GridLayout(1,0));
+         tabPanel.add(buttonPanel);
+         tabPanel.add(new JButton("Button"));		
+         tab.add("Generator", tabPanel);
          tab.add("Text Area", textArea);		
          tab.setMnemonicAt(0, KeyEvent.VK_1);
-           
-
-//	    tabbedPane.addTab("Generator", buttonPanel);
-//	    tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-//	    tabbedPane.addTab("Text Area", textArea);
-//	    tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
-//	    
+         tab.setMnemonicAt(1, KeyEvent.VK_2);
+   
 		////////////////////////GENERATE BUTTON//////////////////////////////////////
 		btn.setForeground(new Color(255, 255, 255));
 		btn.setBackground(new Color(247, 81, 81));
