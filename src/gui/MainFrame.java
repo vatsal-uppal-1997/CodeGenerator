@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
@@ -14,7 +16,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
@@ -23,10 +25,11 @@ import com.sun.glass.events.KeyEvent;
 
 public class MainFrame extends JFrame {
 	
+	//declaring components
 	private JButton btn;
 	private ButtonPanel buttonPanel;
 	private JFileChooser fileChooser;
-	private JTabbedPane tabbedPane;
+	private JTabbedPane tab;
 	private JTextArea textArea;
 
 	public MainFrame() {
@@ -38,56 +41,68 @@ public class MainFrame extends JFrame {
 		fileChooser = new JFileChooser();
 		fileChooser.addChoosableFileFilter(new FileFilter1());
 		
-		tabbedPane= new JTabbedPane();
+		//adding components 
 		btn = new JButton("Generate");
 		buttonPanel = new ButtonPanel();
 		textArea= new JTextArea();
-
-		// ActionListener is an interface not a class
-		btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				textArea.append("Please wait while your code gets generated...\n");
-			}
-
-		});
+		tab= new JTabbedPane();
 		
-		add(tabbedPane, BorderLayout.CENTER);
+		//positioning components
+		add(tab, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.WEST);
-		//add(textPanel, BorderLayout.CENTER);
 		add(btn, BorderLayout.SOUTH);
-		
-		//hr and vrt scrollbars
-		add(new JScrollPane(tabbedPane), BorderLayout.CENTER);
-		
+	
+//		//horizontal and vertical scrollbars
+//		add(new JScrollPane(tab), BorderLayout.CENTER);
+
 		buttonPanel.setBackground(new Color(107, 165, 125));
+		
 		///////////////////////////////////TABBED PANE///////////////////////////
-		 
-	    tabbedPane.setBackground(Color.ORANGE);
-	    tabbedPane.setForeground(Color.BLACK);
-	    tabbedPane.addTab("Tab1", buttonPanel);
-	    tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-	    tabbedPane.addTab("Tab2", textArea);
-	    tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
-	    
+          
+         // add(tab, BorderLayout.CENTER);
+   	      tab.setBackground(Color.ORANGE);
+   	      tab.setForeground(Color.BLACK);
+          JButton button = new JButton();
+
+         // this GridLayout will create a single row of components, with equal space for each component
+         JPanel tab2Panel = new JPanel(new GridLayout(1,0));
+         tab2Panel.add(buttonPanel);
+         tab2Panel.add(new JButton("Button"));		
+         tab.add("Generator", tab2Panel);
+         tab.add("Text Area", textArea);		
+         tab.setMnemonicAt(0, KeyEvent.VK_1);
+           
+
+//	    tabbedPane.addTab("Generator", buttonPanel);
+//	    tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+//	    tabbedPane.addTab("Text Area", textArea);
+//	    tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+//	    
 		////////////////////////GENERATE BUTTON//////////////////////////////////////
 		btn.setForeground(new Color(255, 255, 255));
 		btn.setBackground(new Color(247, 81, 81));
 		btn.setFont(new Font("SansSerif", Font.BOLD, 12));
 		btn.setMnemonic(KeyEvent.VK_G);
 
-
-		setMinimumSize(new Dimension(350, 350));
-		setSize(450, 450);
+		setMinimumSize(new Dimension(600, 600));
+		setSize(600, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-	}
+
+		// ActionListener is an interface not a class
+		btn.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+			textArea.append("Please wait while your code gets generated...\n");
+		}
+		});
+		}
+	
 	    //////////////////////////////MENU BAR//////////////////////////////////////////
 	    private JMenuBar createMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
-		//menuBar.setBackground(new Color(166, 196, 244));
 		menuBar.setFont(new Font("SansSerif", Font.BOLD, 12));
 
-		//////////////// File Menu/////////////////////////////////////////
+		////////////////File Menu/////////////////////////////////////////
 		JMenu fileMenu = new JMenu("File");
 		
 		// creating File menu items
@@ -97,12 +112,12 @@ public class MainFrame extends JFrame {
 
 		// adding items to the file menu
 		fileMenu.add(exportDataItem);
-		fileMenu.addSeparator(); // creates a nearly invisible horizontal line
+		fileMenu.addSeparator(); // creates a horizontal line
 		fileMenu.add(importDataItem);
 		fileMenu.addSeparator();	
 		fileMenu.add(exitItem);
 
-		//////////////////////////// Window Menu///////////////////////////
+		////////////////////////////Window Menu///////////////////////////
 		JMenu windowMenu = new JMenu("Window");
 		JMenu showMenu = new JMenu("Display");
 		JMenuItem showPanelItem = new JCheckBoxMenuItem("Show Tabs");
@@ -119,9 +134,10 @@ public class MainFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ev) {
 				JCheckBoxMenuItem menuItem = (JCheckBoxMenuItem) ev.getSource();
-				tabbedPane.setVisible(menuItem.isSelected());
+				tab.setVisible(menuItem.isSelected());
 			}
 		});
+		
 		// mnemonics for file menu
 		fileMenu.setMnemonic(KeyEvent.VK_F);
 
@@ -129,10 +145,8 @@ public class MainFrame extends JFrame {
 		importDataItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (fileChooser.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
-					System.out.println(fileChooser.getSelectedFile());
-				}
-				;
-
+					System.out.println(fileChooser.getSelectedFile()); 
+				};
 			}
 		});
 
