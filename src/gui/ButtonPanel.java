@@ -40,12 +40,12 @@ public class ButtonPanel extends JPanel {
 
 		// panel size
 		Dimension dim = getPreferredSize();
-		dim.width = 300;
+		dim.width = 350;
 		setPreferredSize(dim);
 
 		// labels
 		txtLabel = new JLabel("Create a new text file : ");
-		angularLabel = new JLabel("Create a angular project : ");
+		angularLabel = new JLabel("Create an angular project : ");
 		javaLabel = new JLabel("Create a new java application : ");
 		dbLabel = new JLabel("Create a new collection : ");
 		testLabel = new JLabel("Create new testcases : ");
