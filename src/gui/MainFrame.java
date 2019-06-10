@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
@@ -31,6 +30,7 @@ public class MainFrame extends JFrame {
 	private JFileChooser fileChooser;
 	private JTabbedPane tab;
 	private JTextArea textArea;
+	private JavaPanel javaPanel;
 
 	public MainFrame() {
 		super("Quick Heal Technologies Ltd. ");
@@ -46,11 +46,13 @@ public class MainFrame extends JFrame {
 		buttonPanel = new ButtonPanel();
 		textArea= new JTextArea();
 		tab= new JTabbedPane();
+		javaPanel= new JavaPanel();
 		
 		//positioning components
 		add(tab, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.WEST);
-		add(btn, BorderLayout.SOUTH);
+		//add(btn, BorderLayout.SOUTH);
+		//add(javaPanel, BorderLayout.EAST);
 	
 //		//horizontal and vertical scrollbars
 //		add(new JScrollPane(tab), BorderLayout.CENTER);
@@ -66,29 +68,17 @@ public class MainFrame extends JFrame {
          // this GridLayout will create a single row of components, with equal space for each component
          JPanel tabPanel = new JPanel(new GridLayout(1,0));
          tabPanel.add(buttonPanel);
-         tabPanel.add(new JButton("Button"));		
+         tabPanel.add(javaPanel);	
          tab.add("Generator", tabPanel);
-         tab.add("Text Area", textArea);		
+         tab.add("Text Area", textArea);	
          tab.setMnemonicAt(0, KeyEvent.VK_1);
          tab.setMnemonicAt(1, KeyEvent.VK_2);
-   
-		////////////////////////GENERATE BUTTON//////////////////////////////////////
-		btn.setForeground(new Color(255, 255, 255));
-		btn.setBackground(new Color(247, 81, 81));
-		btn.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btn.setMnemonic(KeyEvent.VK_G);
-
+         
+		//JFrame
 		setMinimumSize(new Dimension(600, 600));
 		setSize(600, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-
-		// ActionListener is an interface not a class
-		btn.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent arg0) {
-			textArea.append("Please wait while your code gets generated...\n");
-		}
-		});
 		}
 	
 	    //////////////////////////////MENU BAR//////////////////////////////////////////
