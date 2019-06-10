@@ -1,10 +1,11 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
+import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -65,6 +66,7 @@ public class JavaPanel extends JPanel {
 			gbc.gridx=0;
 			gbc.gridy=0;
 			add(classLabel, gbc);
+		    gbc.insets= new Insets(3, 0, 0, 5);
 			//text-field
 			gbc.gridx=1;
 			gbc.gridy=0;
@@ -81,6 +83,7 @@ public class JavaPanel extends JPanel {
 			gbc.gridx=0;
 			gbc.anchor= GridBagConstraints.LINE_END;
 			add(superClassLabel, gbc);
+			gbc.insets= new Insets(3, 0, 0, 5);
 			//text-field
 			gbc.gridy=1;
 			gbc.gridx=1;
@@ -97,6 +100,7 @@ public class JavaPanel extends JPanel {
 			gbc.gridx=0;
 			gbc.anchor= GridBagConstraints.LINE_END;
 			add(methodLabel, gbc);
+			gbc.insets= new Insets(3, 0, 0, 5);
 			//text-field
 			gbc.gridy=2;
 			gbc.gridx=1;
@@ -105,8 +109,8 @@ public class JavaPanel extends JPanel {
 			
 			//////////////FOURTH ROW/////////////////////////////////////////
 			
-			gbc.weightx=0.2;
-			gbc.weighty=0.4;
+			gbc.weightx=1;
+			gbc.weighty=0.3;
 			
 			//Generate Button
 			gbc.gridy=3;
@@ -116,8 +120,7 @@ public class JavaPanel extends JPanel {
 			genBtn.setBackground(new Color(247, 81, 81));
 			genBtn.setFont(new Font("SansSerif", Font.BOLD, 12));
 			genBtn.setMnemonic(KeyEvent.VK_G);
-			
-			
+		    genBtn.setPreferredSize(new Dimension(100, 50));
 		}
 		
 }
