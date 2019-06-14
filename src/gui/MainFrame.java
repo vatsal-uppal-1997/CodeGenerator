@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
-
 import java.awt.event.KeyEvent;
 
 public class MainFrame extends JFrame {
@@ -51,13 +50,9 @@ public class MainFrame extends JFrame {
 		//positioning components
 		add(tab, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.WEST);
-		//add(btn, BorderLayout.SOUTH);
-		//add(javaPanel, BorderLayout.EAST);
-	
-//		//horizontal and vertical scrollbars
-//		add(new JScrollPane(tab), BorderLayout.CENTER);
 
 		buttonPanel.setBackground(new Color(107, 165, 125));
+		javaPanel.setBackground(new Color(110, 172, 239));
 		
 		///////////////////////////////////TABBED PANE///////////////////////////
          
