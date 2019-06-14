@@ -20,13 +20,18 @@ import java.awt.event.KeyEvent;
 public class JavaPanel extends JPanel {
 
 	// declaring labels
+	private JLabel packageLabel;
 	private JLabel classLabel;
 	private JLabel superClassLabel;
+	private JLabel interfaceLabel;
 	private JLabel methodLabel;
+	
 
 	// declaring text-fields
+	private JTextField packageName;
 	private JTextField className;
 	private JTextField superClassName;
+	private JTextField interfaceName;
 	private JTextField methodName;
 
 	// declaring buttons
@@ -35,13 +40,18 @@ public class JavaPanel extends JPanel {
 	public JavaPanel() {
 
 		// labels
+		packageLabel= new JLabel("Package : ");
 		classLabel = new JLabel("Class name : ");
-		superClassLabel = new JLabel("Superclass name : ");
+		superClassLabel = new JLabel("Superclass : ");
+		interfaceLabel= new JLabel("Interfaces: ");
 		methodLabel = new JLabel("Method name : ");
+		
 
 		// text fields
+		packageName= new JTextField(10);
 		className = new JTextField(10);
 		superClassName = new JTextField(10);
+		interfaceName= new JTextField(10);
 		methodName = new JTextField(10);
 
 		// generate button
@@ -72,7 +82,7 @@ public class JavaPanel extends JPanel {
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
-		/////////////// FIRST ROW//////////////////////////////////////
+		////////////////ROW 1/////////////////////////////////
 		gbc.weightx = 1;
 		gbc.weighty = 0.3;
 
@@ -82,55 +92,91 @@ public class JavaPanel extends JPanel {
 		// label
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		add(classLabel, gbc);
+		add(packageLabel, gbc);
 		gbc.insets = new Insets(3, 0, 0, 5);
 		// text-field
 		gbc.gridx = 1;
 		gbc.gridy = 0;
 		gbc.anchor = GridBagConstraints.LINE_START;
+		add(packageName, gbc);
+		
+		///////////////ROW 2///////////////////////////
+		gbc.weightx = 1;
+		gbc.weighty = 0.3;
+
+		gbc.fill = GridBagConstraints.NONE;
+		gbc.anchor = GridBagConstraints.LINE_END;
+
+		// label
+		gbc.gridy = 1;
+		gbc.gridx = 0;
+		add(classLabel, gbc);
+		gbc.insets = new Insets(3, 0, 0, 5);
+		// text-field
+		gbc.gridy = 1;
+		gbc.gridx = 1;
+		gbc.anchor = GridBagConstraints.LINE_START;
 		add(className, gbc);
 
-		/////////////// SECOND ROW//////////////////////////////////////
+		///////////////ROW 3//////////////////////////
 
 		gbc.weightx = 1;
 		gbc.weighty = 0.3;
 
 		// label
-		gbc.gridy = 1;
+		gbc.gridy = 2;
 		gbc.gridx = 0;
 		gbc.anchor = GridBagConstraints.LINE_END;
 		add(superClassLabel, gbc);
 		gbc.insets = new Insets(3, 0, 0, 5);
 		// text-field
-		gbc.gridy = 1;
+		gbc.gridy = 2;
 		gbc.gridx = 1;
 		gbc.anchor = GridBagConstraints.LINE_START;
 		add(superClassName, gbc);
+		
+		//////////////////////////ROW 4//////////////////////////////
+		gbc.weightx = 1;
+		gbc.weighty = 0.3;
 
-		/////////////// THIRD ROW//////////////////////////////////////
+		gbc.fill = GridBagConstraints.NONE;
+		gbc.anchor = GridBagConstraints.LINE_END;
+
+		// label
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		add(interfaceLabel, gbc);
+		gbc.insets = new Insets(3, 0, 0, 5);
+		// text-field
+		gbc.gridx = 1;
+		gbc.gridy = 3;
+		gbc.anchor = GridBagConstraints.LINE_START;
+		add(interfaceName, gbc);
+
+		///////////////ROW 5//////////////////////////////////////
 
 		gbc.weightx = 1;
 		gbc.weighty = 0.3;
 
 		// label
-		gbc.gridy = 2;
+		gbc.gridy = 4;
 		gbc.gridx = 0;
 		gbc.anchor = GridBagConstraints.LINE_END;
 		add(methodLabel, gbc);
 		gbc.insets = new Insets(3, 0, 0, 5);
 		// text-field
-		gbc.gridy = 2;
+		gbc.gridy = 4;
 		gbc.gridx = 1;
 		gbc.anchor = GridBagConstraints.LINE_START;
 		add(methodName, gbc);
 
-		////////////// FOURTH ROW/////////////////////////////////////////
+		//////////////ROW 6/////////////////////////////////////////
 
 		gbc.weightx = 1;
 		gbc.weighty = 0.3;
 
 		// Generate Button
-		gbc.gridy = 3;
+		gbc.gridy = 5;
 		gbc.gridx = 1;
 		add(genBtn, gbc);
 		genBtn.setForeground(new Color(255, 255, 255));
