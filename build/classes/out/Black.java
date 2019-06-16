@@ -1,26 +1,36 @@
-package @PACKAGE#@;
+package nibba;
 import java.util.*;
 
 
-@{
-
-interface @INTERFACE#@ {
+interface i1 {
 
 	int sample();
 
 }
 
-#@}
+interface i2 {
 
+	int sample();
 
-public class @CLASSNAME#@ extends @SUPER#@ {
+}
+
+interface i3 {
+
+	int sample();
+
+}
+
+public class Black extends Magick {
 
 	private static final Scanner sc = new Scanner(System.in);
 
-	@{public static void @METHOD#@() {
+	public static void m1() {
 		System.out.println("Implement Me");
-    }#@}
-    
+    }public static void m2() {
+		System.out.println("Implement Me");
+    }public static void m3() {
+		System.out.println("Implement Me");
+    }    
 	public static void main(String[] args) {
 
 		String name;
@@ -30,3 +40,4 @@ public class @CLASSNAME#@ extends @SUPER#@ {
 	}
 
 }
+

@@ -62,10 +62,13 @@ public class JavaPanel extends JPanel {
 				Map<String, String> conf = new HashMap<>();
 				conf.put("CLASSNAME", className.getText());
 				conf.put("SUPER", superClassName.getText());
-				conf.put("METHOD", methodName.getText());
-				Parser tempParse = new Parser();
+				conf.put("METHOD", methodName.getText()+", ");
+				conf.put("INTERFACE", interfaceName.getText()+", ");
+				conf.put("PACKAGE", packageName.getText());
+				Parser tempParse = new Parser("java", conf);
 				try {
-					tempParse.makeFromTemplate("java", conf);
+					tempParse.parse();
+					tempParse.write();
 				} catch(Exception err) {
 					System.err.println(err);
 				}

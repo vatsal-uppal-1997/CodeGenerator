@@ -1,4 +1,3 @@
-package gui;
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
@@ -65,7 +64,6 @@ public class Parser {
 		// IO xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 		
 		this.fileContent = temp.toString();
-		this.parsedContent = new StringBuffer();
 		this.conf = conf;
 	}
 	
@@ -79,7 +77,7 @@ public class Parser {
 	private void roughParse() {
 		
 		Matcher matcher = getMatcher(this.fileContent);
-		String temp = new String(this.fileContent);
+		StringBuffer sb = new StringBuffer(this.fileContent);
 
 		while (matcher.find()) {
 			int startIdx = matcher.start();
@@ -88,18 +86,18 @@ public class Parser {
 			String value = this.conf.get(key);
 			if (value.indexOf(",") != -1)
 				continue;
-			temp = temp.replace("@"+key+"#@", value);
+			sb.replace(startIdx, endIdx, value);
 		}	
 
-		this.fileContent = temp;
+		this.fileContent = sb.toString();
 	}
 
 	private void blockParse() {
 	
-		String[] arr = this.fileContent.split("[#@]+[{}\n\r]+");
+		String[] arr = this.fileContent.split("[#@]+[{}\\n\\r]+");
 		for (String block: arr) {
 			Matcher matcher = getMatcher(block);
-			if (!matcher.find()) {
+			if (!matcher.matches()) {
 				this.parsedContent.append(block);
 				continue;
 			}
@@ -107,19 +105,20 @@ public class Parser {
 			int endIdx = matcher.end();
 			String key = block.substring(startIdx + 1, endIdx - 2);
 			String[] values = this.conf.get(key).split("\\s*,\\s*");
-			String temp = new String(block);
+			StringBuffer temp = new StringBuffer(block);
 			for (String value: values) {
-				this.parsedContent.append(temp.replace("@"+key+"#@", value));
+				temp.replace(startIdx, endIdx, value);
+				this.parsedContent.append(temp.toString());
 			}
 		}	
-		this.fileContent = this.parsedContent.toString();
+		
 	}
 
 	public String parse() {
+	
 		roughParse();
-		blockParse();
-		System.out.println(this.fileContent);	
-		return this.fileContent;
+		blockParse();	
+		return this.parsedContent.toString();
 	
 	}
 
